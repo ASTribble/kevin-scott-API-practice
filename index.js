@@ -1,4 +1,4 @@
-// const apiKey = AIzaSyC188XYvuPaGSU_R7qTNRKTa1-x6S-1qlM
+
 // const endPoint = 'https://www.googleapis.com/youtube/v3/search'
 
 // part: 'snippet'
@@ -17,7 +17,7 @@
 
 const GITHUB_SEARCH_URL = 'https://api.github.com/search/repositories';
 const YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
-
+const apiKey = 'AIzaSyC188XYvuPaGSU_R7qTNRKTa1-x6S-1qlM';
 
 // function watchSubmit() {
 //   $('.js-search-form').submit(event => {
@@ -40,6 +40,37 @@ function handleUserSearch(){
     console.log(`queryItem: ${queryItem}`);
     $('.search-item').val("");
   });
+}
+
+// / Get JSON from the YouTube API based on the user search term
+// function getDataFromApi(searchTerm, callback) {
+//   const query = {
+//     q: `${searchTerm} in:name`,
+//     per_page: 5
+//   }
+//   $.getJSON(GITHUB_SEARCH_URL, query, callback);
+// }
+
+
+function getInfoFromApi(queryItem, callback){
+  const query = {
+    part: 'snippet',
+    key: apiKey,
+    q: queryItem,
+    per_page: 5
+  }
+  $.getJSON(YOUTUBE_SEARCH_URL, query, callback);
+}
+
+// function displayGitHubSearchData(data) {
+  //   const results = data.items.map((item) => renderResult(item));
+    // $('.js-search-results').html(results);
+      
+  
+  // }
+function handleInfoFromYOUTUBE(receivedInfo){
+  console.log(receivedInfo.items)
+
 }
 
 function renderPage(){
