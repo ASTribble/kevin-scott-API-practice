@@ -18,12 +18,27 @@
 const GITHUB_SEARCH_URL = 'https://api.github.com/search/repositories';
 const YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
 
+
+// function watchSubmit() {
+//   $('.js-search-form').submit(event => {
+//     event.preventDefault();
+//     const queryTarget = $(event.currentTarget).find('.js-query');
+//     const query = queryTarget.val();
+//     // clear out the input
+//     queryTarget.val("");
+//     getDataFromApi(query, displayGitHubSearchData);
+//   });
+// }
+
+
 // Accept a user search term
 function handleUserSearch(){
-  $('button').click(function(event){
+  $('form').submit( function(event){
     event.preventDefault();
     console.log('the button was clicked');
-
+    const queryItem = $('.search-item').val();
+    console.log(`queryItem: ${queryItem}`);
+    $('.search-item').val("");
   });
 }
 
